@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8g4jn65lx6e8"]
+
+[ext_resource type="Script" path="res://actors/gun_type_weapon_shot.gd" id="1_3afp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4wab"]
+size = Vector2(4, 1)
+
+[node name="GunTypeWeaponShot" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3afp1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 4.0
+offset_bottom = 1.0
+color = Color(0, 0.85098, 0.85098, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_a4wab")
+disabled = true

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://12ea6hcl1o81"]
+
+[ext_resource type="PackedScene" uid="uid://twp4a6ota4gr" path="res://actors/player.tscn" id="1_jc1dx"]
+[ext_resource type="Texture2D" uid="uid://drhpmt6w33j4d" path="res://images/space_background.png" id="2_ewptt"]
+[ext_resource type="Texture2D" uid="uid://cbsebogcnldl" path="res://images/nebula_1_ts.png" id="4_5ske3"]
+[ext_resource type="Texture2D" uid="uid://qdoaecibeikl" path="res://images/enemy_boss_placeholder.png" id="4_ew1g0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(4096, 4096)
+
+[node name="SpaceBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_ewptt")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(4096, 4096)
+
+[node name="Nebula1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("4_5ske3")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("1_jc1dx")]
+position = Vector2(518, 266)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(1374, 382)
+texture = ExtResource("4_ew1g0")

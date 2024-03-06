@@ -15,14 +15,9 @@ var destination = null;
 func facing(length) -> Vector2:
 	return Vector2.RIGHT.rotated(rotation) * length
 	
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-	pass
+	if (hit_points <= 0):
+		queue_free()
 
 func _rotation_process(delta):
 	if (destination != null):
@@ -52,7 +47,3 @@ func _physics_process(delta):
 func onImpact(other):
 	if (other is Bullet):
 		hit_points = hit_points - other.hit_points
-		
-func onDestroy():
-	get_parent().remove_child(self)
-	

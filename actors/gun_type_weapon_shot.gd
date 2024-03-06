@@ -1,13 +1,13 @@
-extends Actor
+extends Bullet
 
 class_name GunTypeWeaponShot
 
-var _gunOrigin = null
-
 func _init():
-	_gunOrigin = position
 	maxSpeed = 1000
 	maxAccel = 2400
+	
+func _ready():
+	pass
 
 func _process(delta):
 	destination = position + facing(maxSpeed * 2) 

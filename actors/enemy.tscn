@@ -3,15 +3,21 @@
 [ext_resource type="Script" path="res://actors/enemy.gd" id="1_ivjfd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88bft"]
-size = Vector2(23, 25)
+size = Vector2(25, 25)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ivjfd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(12.5, 12.5)
-shape = SubResource("RectangleShape2D_88bft")
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 25.0
 offset_bottom = 25.0
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="detection" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(12.5, 12.5)
+shape = SubResource("RectangleShape2D_88bft")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, 12.5)
+shape = SubResource("RectangleShape2D_88bft")

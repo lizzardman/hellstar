@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo6874bg56n46"]
+
+[ext_resource type="Script" path="res://actors/bullet.gd" id="1_2kiwi"]
+
+[node name="RocketBullet" type="Area2D"]
+script = ExtResource("1_2kiwi")

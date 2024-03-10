@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=3 uid="uid://blhlxbr1b35va"]
+
+[ext_resource type="Texture2D" uid="uid://bexqppruwdgwk" path="res://images/bos_1/idle/boss_1.png" id="1_2ah5q"]
+[ext_resource type="Script" path="res://actors/boss_eye.gd" id="1_p8hhf"]
+[ext_resource type="Texture2D" uid="uid://b0hvjiiqrnfe4" path="res://images/bos_1/idle/boss_2.png" id="2_tn40e"]
+[ext_resource type="Texture2D" uid="uid://b3a24w3sj52a3" path="res://images/bos_1/idle/boss_3.png" id="3_u77at"]
+[ext_resource type="Texture2D" uid="uid://35am7uqlvt85" path="res://images/bos_1/idle/boss_4.png" id="4_dwwdu"]
+[ext_resource type="Texture2D" uid="uid://b7yh3byv2d164" path="res://images/bos_1/idle/boss_5.png" id="5_045ll"]
+[ext_resource type="Texture2D" uid="uid://b5fm12m0uaetb" path="res://images/bos_1/idle/boss_6.png" id="6_f85my"]
+[ext_resource type="Texture2D" uid="uid://e6xtlttytaxd" path="res://images/bos_1/idle/boss_7.png" id="7_72o32"]
+[ext_resource type="Texture2D" uid="uid://cbqdhw7a2aonu" path="res://images/bos_1/idle/boss_8.png" id="8_r5jvs"]
+[ext_resource type="Script" path="res://actors/AnimatedSprite2D.gd" id="10_pv8r1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_riat0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ah5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tn40e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u77at")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dwwdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_045ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f85my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_72o32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r5jvs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rinpg"]
+radius = 164.195
+
+[node name="BossEye" type="CharacterBody2D"]
+script = ExtResource("1_p8hhf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_riat0")
+speed_scale = 1.5
+script = ExtResource("10_pv8r1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 12)
+shape = SubResource("CircleShape2D_rinpg")

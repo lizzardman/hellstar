@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://caha55be08y4g"]
+
+[ext_resource type="Script" path="res://effects/death_effect.gd" id="1_opce5"]
+[ext_resource type="Texture2D" uid="uid://dmv3fbrnp7vth" path="res://images/particle_1.png" id="1_rhjmi"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxcys"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -77.53
+radial_accel_max = 1000.0
+attractor_interaction_enabled = false
+scale_min = 0.1
+turbulence_noise_strength = 3.92
+turbulence_noise_scale = 0.0
+
+[node name="DeathEffect" type="Node2D"]
+script = ExtResource("1_opce5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_pxcys")
+texture = ExtResource("1_rhjmi")
+lifetime = 0.34
+speed_scale = 3.0
+explosiveness = 0.91
+interp_to_end = 0.121
+visibility_rect = Rect2(-50, -50, 100, 100)
+trail_lifetime = 0.62

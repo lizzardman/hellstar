@@ -2,22 +2,29 @@ extends CharacterBody2D
 
 class_name Actor
 
-@export var maxSpeed = 400
-@export var maxAccel = 800
-@export var rotation_speed = PI * 4
-@export var deceleration = 650
-@export var hit_points = 100
+var maxSpeed = 400
+var maxAccel = 800
+var rotation_speed = PI * 4
+var deceleration = 650
+var hit_points = 100
 
 var destination = null;
-var wasd_direction = null;
+var wasd_direction = Vector2.ZERO;
 var weapons = []
 
 func facing(length) -> Vector2:
 	return Vector2.RIGHT.rotated(rotation) * length
 	
+func die():
+	var death_scene = load("res://effects/death_effect.tscn")
+	var death_node = death_scene.instantiate()
+	death_node.position = position
+	get_parent().add_child(death_node)
+	queue_free()
+	
 func _process(delta):
 	if (hit_points <= 0):
-		queue_free()
+		die()
 	else:
 		for w in weapons:
 			w.process(delta)
@@ -38,16 +45,14 @@ func _movement_process(delta):
 	var _destination = destination
 	var angle = 0;
 	
-	if (wasd_direction != null):
+	if (_destination != null && wasd_direction != Vector2.ZERO):
 		angle = atan2(wasd_direction.x, wasd_direction.y)
 		if (_destination == null):
 			_destination = facing(Constants.max_int) 
-	
-	if (_destination != null):
+			
 		var inputVector = (_destination - position).normalized().rotated(angle);
 		velocity = velocity.move_toward(inputVector * maxSpeed, maxAccel * delta).limit_length(maxSpeed);	
-		
-	if (_destination == null):
+	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 
 func _physics_process(delta):

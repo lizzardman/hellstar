@@ -1,47 +1,29 @@
 extends Actor
 
-var mouseDownEvent = null;
-var mouseEvent = null;
-
 var bulletScene: Resource = null;
+
+var rmb = false
+var lmb = false
 
 func _init():
 	weapons.append(MachineGun.new())
 
 func _input(event):
-	if (event is InputEventMouseButton):
-		mouseEvent = event;
-		
-	if (event is InputEventKey):
-		if (event.keycode == KEY_Q && event.is_pressed()):
-			weapons[0].shoot(self)
-		
+	if (event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT):
+		if (event.button_index == MOUSE_BUTTON_LEFT):
+			lmb =  event.is_pressed()
+		if (event.button_index == MOUSE_BUTTON_RIGHT):
+			rmb = event.is_pressed()
+
 func  _process(delta):
 	super._process(delta)
-	var mouseButton = mouseEvent != null && mouseEvent.pressed == true;
 	
-	if (mouseButton):
-		destination = get_global_mouse_position();
+	if (lmb):
+		weapons[0].shoot(self)
 	
-	if (destination != null):
-		if ((position - destination).length() < deceleration * delta):
-			destination = null;
-			
-	var x = 0;
-	var y = 0;
+	destination = get_global_mouse_position();
 	
-	if Input.is_key_pressed(KEY_W):
-		x = 1
-	if Input.is_key_pressed(KEY_S):
-		x = -1
-	if Input.is_key_pressed(KEY_A):
-		y = -1
-	if Input.is_key_pressed(KEY_D):
-		y = 1
+	var x = (Input.is_key_pressed(KEY_W) as int) - (Input.is_key_pressed(KEY_S) as int);
+	var y = (Input.is_key_pressed(KEY_D) as int) - (Input.is_key_pressed(KEY_A) as int);
 	
-	if (x != 0 || y != 0):
-		wasd_direction = Vector2(y, x)
-	else:
-		wasd_direction = null
-	
-		
+	wasd_direction = Vector2(y, x)

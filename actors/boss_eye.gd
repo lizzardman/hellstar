@@ -1,4 +1,6 @@
-extends Actor
+extends EnemyActor
+
+class_name BossEye
 
 var monster_max_cooldown = 2
 var monster_cooldown = 0 
@@ -9,6 +11,9 @@ func _init():
 	rotation_speed = 50
 	maxSpeed = 10
 	hit_points = 10000
+	shoot_radius = 1600
+	
+	weapons.append(BossEyeWeapon.new())
 
 func _process(delta):
 	if (monster_cooldown <= 0):
@@ -19,7 +24,10 @@ func _process(delta):
 		
 	monster_cooldown -= delta
 		
-	destination = get_parent().find_child('player').position
+	var player = get_parent().find_child('player')
+	if (player != null):
+		destination = player.position
+		
 	super._process(delta)
 	
 func _ready():

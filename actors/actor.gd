@@ -7,10 +7,17 @@ var maxAccel = 800
 var rotation_speed = PI * 4
 var deceleration = 650
 var hit_points = 100
+var max_hit_points = 100
+
+var shields = 0
+var max_shields = 300
 
 var destination = null;
 var wasd_direction = Vector2.ZERO;
 var weapons = []
+
+func isEnemyType() -> bool: 
+	return self is Enemy
 
 func facing(length) -> Vector2:
 	return Vector2.RIGHT.rotated(rotation) * length
@@ -28,6 +35,12 @@ func _process(delta):
 	else:
 		for w in weapons:
 			w.process(delta)
+			
+func give_shields(value):
+	shields = max(0, min(max_shields, shields + value))
+	
+func give_hit_points(value):
+	hit_points = min(max_hit_points, hit_points + value)
 	
 func _rotation_process(delta):
 	if (destination != null):
@@ -61,5 +74,11 @@ func _physics_process(delta):
 	move_and_slide();
 	
 func onImpact(other):
-	if (other is Bullet):
+	var damage = other.damage
+	
+	if (shields > 0):
+		give_shields(-other.damage)
+	else:
 		hit_points = hit_points - other.damage
+		
+	return true

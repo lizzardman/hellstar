@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://blhlxbr1b35va"]
+[gd_scene load_steps=15 format=3 uid="uid://blhlxbr1b35va"]
 
 [ext_resource type="Texture2D" uid="uid://bexqppruwdgwk" path="res://images/bos_1/idle/boss_1.png" id="1_2ah5q"]
 [ext_resource type="Script" path="res://actors/boss_eye.gd" id="1_p8hhf"]
@@ -10,6 +10,24 @@
 [ext_resource type="Texture2D" uid="uid://e6xtlttytaxd" path="res://images/bos_1/idle/boss_7.png" id="7_72o32"]
 [ext_resource type="Texture2D" uid="uid://cbqdhw7a2aonu" path="res://images/bos_1/idle/boss_8.png" id="8_r5jvs"]
 [ext_resource type="Script" path="res://actors/AnimatedSprite2D.gd" id="10_pv8r1"]
+[ext_resource type="Texture2D" uid="uid://dmv3fbrnp7vth" path="res://images/particle_1.png" id="11_dlga4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pk0c8"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -77.53
+radial_accel_max = 1000.0
+attractor_interaction_enabled = false
+scale_min = 0.1
+turbulence_noise_strength = 3.92
+turbulence_noise_scale = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_riat0"]
 animations = [{
@@ -49,6 +67,15 @@ radius = 164.195
 [node name="BossEye" type="CharacterBody2D"]
 script = ExtResource("1_p8hhf")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_pk0c8")
+texture = ExtResource("11_dlga4")
+speed_scale = 3.0
+interp_to_end = 0.121
+visibility_rect = Rect2(-50, -50, 100, 100)
+trail_lifetime = 0.62
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_riat0")
@@ -56,5 +83,10 @@ speed_scale = 1.5
 script = ExtResource("10_pv8r1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 12)
+position = Vector2(2, 6)
 shape = SubResource("CircleShape2D_rinpg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -40.0
+pitch_scale = 0.94
+max_polyphony = 2

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv1bu6lsfylrt"]
+
+[ext_resource type="Script" path="res://pickups/energy_pickup.gd" id="1_5qgds"]
+[ext_resource type="Texture2D" uid="uid://bt6434khnthsw" path="res://images/energy_pickup.png" id="2_nylb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxff3"]
+size = Vector2(24, 24)
+
+[node name="EnergyPickup" type="Area2D"]
+script = ExtResource("1_5qgds")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+texture = ExtResource("2_nylb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_mxff3")

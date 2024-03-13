@@ -9,6 +9,7 @@ func _init():
 	var bullet_right = WeaponProjectileConfig.new(bullet_scene)
 	bullet_right.position = Vector2(30, 30)
 	
+	max_cooldown = 0.1
+	
 	bullets.append(bullet_right)
 	bullets.append(bullet_left)
-

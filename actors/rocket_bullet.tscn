@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo6874bg56n46"]
+[gd_scene load_steps=7 format=3 uid="uid://bo6874bg56n46"]
 
-[ext_resource type="Script" path="res://actors/bullet.gd" id="1_2kiwi"]
+[ext_resource type="Script" path="res://actors/rocket_bullet.gd" id="1_qfoh4"]
+[ext_resource type="Texture2D" uid="uid://dq24ld76hi4b0" path="res://images/messile.png" id="2_dqsdw"]
+
+[sub_resource type="Gradient" id="Gradient_bv34k"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qs3lo"]
+gradient = SubResource("Gradient_bv34k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ee7m0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 2, 1)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+radial_velocity_min = 45.0
+radial_velocity_max = 45.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 80.0
+radial_accel_max = 100.0
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1, 0.392157, 0, 1)
+color_ramp = SubResource("GradientTexture1D_qs3lo")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3446"]
+size = Vector2(40, 20)
 
 [node name="RocketBullet" type="Area2D"]
-script = ExtResource("1_2kiwi")
+script = ExtResource("1_qfoh4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-19, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ee7m0")
+lifetime = 0.11
+
+[node name="Messile" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_dqsdw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_h3446")

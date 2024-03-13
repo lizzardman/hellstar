@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqmsddqn7h5cg"]
+
+[ext_resource type="Texture2D" uid="uid://do0o1pmiwj0se" path="res://images/particle_laser.png" id="1_8fmep"]
+[ext_resource type="Script" path="res://actors/eye_boss_laser_bullet.gd" id="1_vpqd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnalx"]
+size = Vector2(515.5, 4)
+
+[sub_resource type="Gradient" id="Gradient_wtnv1"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uowcb"]
+gradient = SubResource("Gradient_wtnv1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nequx"]
+particle_flag_disable_z = true
+spread = 0.0
+radial_velocity_min = 100.0
+radial_velocity_max = 350.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -23.42
+radial_accel_max = -23.42
+tangential_accel_min = -16.22
+tangential_accel_max = -5.4
+scale_min = 2.0
+scale_max = 4.0
+color = Color(0.878431, 0.0823529, 0, 1)
+color_ramp = SubResource("GradientTexture1D_uowcb")
+
+[node name="EyeBossLaserBullet" type="Area2D"]
+script = ExtResource("1_vpqd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(259.25, -1)
+shape = SubResource("RectangleShape2D_qnalx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(258, -1)
+rotation = 1.5708
+scale = Vector2(2, 5.16)
+texture = ExtResource("1_8fmep")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_nequx")
+lifetime = 0.2
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(515, 1)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_nequx")
+lifetime = 0.5

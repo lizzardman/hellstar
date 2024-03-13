@@ -42,10 +42,8 @@ frame_progress = 0.676725
 speed_scale = 2.0
 script = ExtResource("6_1w15q")
 
-[node name="detection_area" type="Area2D" parent="."]
-
-[node name="detection" type="CollisionShape2D" parent="detection_area"]
-shape = SubResource("RectangleShape2D_88bft")
-
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_88bft")
+one_way_collision = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

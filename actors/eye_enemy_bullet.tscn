@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv08txa42nakp"]
+
+[ext_resource type="Script" path="res://actors/eye_enemy_bullet.gd" id="1_fm8n5"]
+[ext_resource type="Texture2D" uid="uid://dmv3fbrnp7vth" path="res://images/particle_1.png" id="2_00k2p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3b8m"]
+
+[node name="EyeEnemyBullet" type="Area2D"]
+script = ExtResource("1_fm8n5")
+
+[node name="Particle1" type="Sprite2D" parent="."]
+texture = ExtResource("2_00k2p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b3b8m")

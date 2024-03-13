@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1dk32dge3e56"]
+
+[ext_resource type="Script" path="res://effects/evade_effect.gd" id="1_pb1wu"]
+
+[sub_resource type="Gradient" id="Gradient_xomw8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n6yk5"]
+gradient = SubResource("Gradient_xomw8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8pe3e"]
+particle_flag_disable_z = true
+radial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0.266667, 0.384314, 1, 1)
+color_ramp = SubResource("GradientTexture1D_n6yk5")
+
+[node name="EvadeEffect" type="Node2D"]
+script = ExtResource("1_pb1wu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(13, -30)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_8pe3e")
+lifetime = 0.3
+speed_scale = 3.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(15, 30)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_8pe3e")
+lifetime = 0.3
+speed_scale = 3.0

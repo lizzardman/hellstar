@@ -1,18 +1,135 @@
-[gd_scene load_steps=4 format=3 uid="uid://twp4a6ota4gr"]
+[gd_scene load_steps=26 format=3 uid="uid://twp4a6ota4gr"]
 
 [ext_resource type="Script" path="res://actors/player.gd" id="1_toes1"]
-[ext_resource type="Texture2D" uid="uid://ce0cyab6ipkr" path="res://images/player_placeholder.png" id="2_rfckb"]
+[ext_resource type="Texture2D" uid="uid://di2onlfmsgjps" path="res://images/evade/player_placeholder.png" id="2_70sqx"]
+[ext_resource type="Texture2D" uid="uid://6tgcw8dmu2v6" path="res://images/evade/player_placeholder_2.png" id="3_0vnn8"]
+[ext_resource type="Texture2D" uid="uid://cx66solwx3gpd" path="res://images/evade/player_placeholder_3.png" id="4_amfp0"]
+[ext_resource type="Texture2D" uid="uid://3rnl6v5yju2w" path="res://images/evade/player_placeholder_4.png" id="5_7244o"]
+[ext_resource type="Texture2D" uid="uid://gxnrs8raybvd" path="res://images/evade/player_placeholder_5.png" id="6_qj3t0"]
+[ext_resource type="Texture2D" uid="uid://dcwa17qtnq576" path="res://images/evade/player_placeholder_6.png" id="7_18mix"]
+[ext_resource type="Texture2D" uid="uid://d0bqyi0mptfon" path="res://images/evade/player_placeholder_7.png" id="8_bh2vv"]
+[ext_resource type="Texture2D" uid="uid://bunmhjft1w4df" path="res://images/evade/player_placeholder_8.png" id="9_mnmyy"]
+[ext_resource type="Texture2D" uid="uid://kku8unlx1nkw" path="res://images/evade/player_placeholder_9.png" id="10_sqwjd"]
+[ext_resource type="Texture2D" uid="uid://osok2cobyfkc" path="res://images/evade/player_placeholder_10.png" id="11_t6p42"]
+[ext_resource type="Texture2D" uid="uid://b2iyxht7fvjgk" path="res://images/evade/player_placeholder_11.png" id="12_eqrl1"]
+[ext_resource type="Texture2D" uid="uid://dlvwhak8bswtd" path="res://images/evade/player_placeholder_12.png" id="13_metil"]
+[ext_resource type="Script" path="res://actors/AnimatedSprite2DOnce.gd" id="14_1bjny"]
+
+[sub_resource type="Curve" id="Curve_qwndl"]
+_data = [Vector2(0.0103093, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.384615), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_42coj"]
+curve = SubResource("Curve_qwndl")
+
+[sub_resource type="Gradient" id="Gradient_iv6og"]
+offsets = PackedFloat32Array(0, 0.259036)
+colors = PackedColorArray(1, 0.435294, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0c01s"]
+gradient = SubResource("Gradient_iv6og")
+
+[sub_resource type="Curve" id="Curve_6ywni"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.438144, 0.120879), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t1aie"]
+curve = SubResource("Curve_6ywni")
+
+[sub_resource type="Curve" id="Curve_3u4ne"]
+_data = [Vector2(0.0103093, 0), 0.0, 0.0, 0, 0, Vector2(0.489691, 1), 0.0, 0.0, 0, 0, Vector2(0.685567, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0659339), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qlt4p"]
+curve = SubResource("Curve_3u4ne")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6v75q"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
+radial_velocity_max = 20.0
+radial_velocity_curve = SubResource("CurveTexture_qlt4p")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 10.0
+radial_accel_max = 20.0
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0.835294, 0.431373, 0, 1)
+color_ramp = SubResource("GradientTexture1D_0c01s")
+alpha_curve = SubResource("CurveTexture_42coj")
+hue_variation_min = -0.03
+hue_variation_max = -0.03
+hue_variation_curve = SubResource("CurveTexture_t1aie")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_peora"]
 size = Vector2(88, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6usl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_70sqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0vnn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_amfp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7244o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qj3t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_18mix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bh2vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mnmyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sqwjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t6p42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eqrl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_metil")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_toes1")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-32, 0)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_6v75q")
+lifetime = 0.1
+speed_scale = 2.0
+randomness = 0.1
+interp_to_end = 0.1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_peora")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.222723, -0.8909)
 rotation = 1.5708
-texture = ExtResource("2_rfckb")
+scale = Vector2(1.02784, 0.97912)
+sprite_frames = SubResource("SpriteFrames_6usl8")
+script = ExtResource("14_1bjny")

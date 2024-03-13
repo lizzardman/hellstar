@@ -1,15 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://12ea6hcl1o81"]
+[gd_scene load_steps=15 format=3 uid="uid://12ea6hcl1o81"]
 
 [ext_resource type="PackedScene" uid="uid://blhlxbr1b35va" path="res://actors/boss_eye.tscn" id="1_bvrjq"]
 [ext_resource type="PackedScene" uid="uid://twp4a6ota4gr" path="res://actors/player.tscn" id="1_jc1dx"]
 [ext_resource type="Texture2D" uid="uid://drhpmt6w33j4d" path="res://images/space_background.png" id="2_ewptt"]
 [ext_resource type="Texture2D" uid="uid://cbsebogcnldl" path="res://images/nebula_1_ts.png" id="4_5ske3"]
-[ext_resource type="PackedScene" uid="uid://duhf0e0j60crw" path="res://actors/enemy.tscn" id="5_s6a3n"]
+
+[sub_resource type="Gradient" id="Gradient_o4f8e"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5la67"]
+gradient = SubResource("Gradient_o4f8e")
+width = 600
+height = 200
+
+[sub_resource type="Gradient" id="Gradient_b7g2y"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jpo5x"]
+gradient = SubResource("Gradient_b7g2y")
+width = 600
+height = 200
+
+[sub_resource type="Gradient" id="Gradient_wirv6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.615686)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l3t5p"]
+gradient = SubResource("Gradient_wirv6")
+width = 600
+height = 200
+fill_from = Vector2(0, 0.024)
+fill_to = Vector2(0.568, 0)
+
+[sub_resource type="Gradient" id="Gradient_bedpa"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5uwrb"]
+gradient = SubResource("Gradient_bedpa")
+width = 600
+height = 200
+
+[sub_resource type="Gradient" id="Gradient_6ccj1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lu2i4"]
+gradient = SubResource("Gradient_6ccj1")
+width = 600
+height = 200
 
 [node name="world" type="Node2D"]
 
 [node name="BossEye" parent="." instance=ExtResource("1_bvrjq")]
-position = Vector2(1319, 328)
+position = Vector2(1374, 263)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -34,23 +73,39 @@ position = Vector2(374, 290)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
-[node name="Enemy" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(810, 163)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="Enemy2" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(854, 305)
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Enemy3" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(918, 465)
+[node name="CenterContainer2" type="CenterContainer" parent="UI"]
+offset_left = 377.0
+offset_top = 590.0
+offset_right = 977.0
+offset_bottom = 1102.0
+scale = Vector2(0.305235, 0.0392082)
 
-[node name="Enemy4" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(714, 248)
+[node name="Healthbar" type="TextureProgressBar" parent="UI/CenterContainer2"]
+layout_mode = 2
+texture_under = SubResource("GradientTexture2D_5la67")
+texture_progress = SubResource("GradientTexture2D_jpo5x")
+tint_progress = Color(1, 0, 0.0784314, 1)
 
-[node name="Enemy5" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(1007, 359)
+[node name="Shieldsbar" type="TextureProgressBar" parent="UI/CenterContainer2"]
+layout_mode = 2
+max_value = 400.0
+texture_progress = SubResource("GradientTexture2D_l3t5p")
+tint_progress = Color(0, 1, 1, 1)
 
-[node name="Enemy6" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(936, 199)
+[node name="CenterContainer3" type="CenterContainer" parent="UI"]
+offset_left = 564.0
+offset_top = 590.0
+offset_right = 1076.0
+offset_bottom = 1102.0
+scale = Vector2(0.329705, 0.0399396)
 
-[node name="Enemy7" parent="." instance=ExtResource("5_s6a3n")]
-position = Vector2(753, 396)
+[node name="Energybar" type="TextureProgressBar" parent="UI/CenterContainer3"]
+layout_mode = 2
+step = 0.1
+texture_under = SubResource("GradientTexture2D_5uwrb")
+texture_progress = SubResource("GradientTexture2D_lu2i4")
+tint_progress = Color(1, 1, 0.0235294, 1)

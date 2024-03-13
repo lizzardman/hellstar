@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://be0ousq1nv7iu"]
+
+[ext_resource type="Script" path="res://pickups/repair_pickup.gd" id="1_gm1k4"]
+[ext_resource type="Texture2D" uid="uid://cx7fok572nml3" path="res://images/repair_pickup.png" id="1_iieir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4aisa"]
+size = Vector2(24, 24)
+
+[node name="RepairPickup" type="Area2D"]
+script = ExtResource("1_gm1k4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iieir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4aisa")

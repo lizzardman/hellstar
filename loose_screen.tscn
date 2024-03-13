@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://c05j7fdpepluu"]
+
+[ext_resource type="Script" path="res://loose_button.gd" id="1_ak3s8"]
+
+[node name="LooseScreen" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+text = "You have been destroyed by cosmic abberations"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer3"]
+layout_mode = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = 10.0
+offset_right = 34.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer2"]
+layout_mode = 2
+text = "Try again"
+script = ExtResource("1_ak3s8")

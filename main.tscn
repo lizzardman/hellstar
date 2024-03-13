@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://12ea6hcl1o81"]
+[gd_scene load_steps=35 format=3 uid="uid://12ea6hcl1o81"]
 
 [ext_resource type="PackedScene" uid="uid://blhlxbr1b35va" path="res://actors/boss_eye.tscn" id="1_bvrjq"]
 [ext_resource type="PackedScene" uid="uid://twp4a6ota4gr" path="res://actors/player.tscn" id="1_jc1dx"]
@@ -52,6 +52,17 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_6ccj1")
 width = 600
 height = 200
+
+[sub_resource type="Gradient" id="Gradient_cgw4n"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_76b2x"]
+gradient = SubResource("Gradient_cgw4n")
+
+[sub_resource type="Gradient" id="Gradient_mst4e"]
+colors = PackedColorArray(0.698039, 0, 0.921569, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tnnmh"]
+gradient = SubResource("Gradient_mst4e")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwvwd"]
 texture = ExtResource("5_gflht")
@@ -211,6 +222,23 @@ step = 0.1
 texture_under = SubResource("GradientTexture2D_5uwrb")
 texture_progress = SubResource("GradientTexture2D_lu2i4")
 tint_progress = Color(1, 1, 0.0235294, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_right = -136.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(9.27417, 0.151414)
+
+[node name="EnemyHealthbar" type="TextureProgressBar" parent="UI/CenterContainer"]
+visible = false
+layout_mode = 2
+max_value = 10000.0
+texture_under = SubResource("GradientTexture2D_76b2x")
+texture_progress = SubResource("GradientTexture2D_tnnmh")
 
 [node name="PickupTutorial" parent="." instance=ExtResource("6_h3n0e")]
 position = Vector2(625, 390)

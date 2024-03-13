@@ -52,6 +52,9 @@ func _evade():
 	iframes = 0.7
 	
 func  _process(delta):
+	if (hit_points <= 0):
+		get_tree().change_scene_to_file("res://loose_screen.tscn")
+	
 	super._process(delta)
 	
 	if (iframes > 0):

@@ -6,8 +6,8 @@ var maxSpeed = 400
 var maxAccel = 800
 var rotation_speed = PI * 4
 var deceleration = 650
-var hit_points = 100
-var max_hit_points = 100
+var hit_points = 100.0
+var max_hit_points = 100.0
 
 var shields = 0
 var max_shields = 300

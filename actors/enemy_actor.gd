@@ -3,7 +3,11 @@ extends Actor
 class_name EnemyActor
 
 var shoot_radius = 300
-var agro_radius = 2000
+var agro_radius = 3000
+
+func distance_to_player():
+	var player = get_parent().find_child('player')
+	return position.distance_to(player.position)
 
 func _init():
 	var weapon = EyeEnemyGun.new()

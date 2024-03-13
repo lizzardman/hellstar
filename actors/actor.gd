@@ -11,13 +11,14 @@ var max_hit_points = 100
 
 var shields = 0
 var max_shields = 300
+var shield_degradation_rate = 5
 
 var destination = null;
 var wasd_direction = Vector2.ZERO;
 var weapons = []
 
 func isEnemyType() -> bool: 
-	return self is Enemy
+	return self is EnemyActor
 
 func facing(length) -> Vector2:
 	return Vector2.RIGHT.rotated(rotation) * length
@@ -26,10 +27,11 @@ func die():
 	var death_scene = load("res://effects/death_effect.tscn")
 	var death_node = death_scene.instantiate()
 	death_node.position = position
-	get_parent().add_child(death_node)
+	get_parent().call_deferred("add_child", death_node)
 	queue_free()
 	
 func _process(delta):
+	give_shields(-shield_degradation_rate * delta)
 	if (hit_points <= 0):
 		die()
 	else:
@@ -75,7 +77,7 @@ func _physics_process(delta):
 	
 func onImpact(other):
 	var damage = other.damage
-	
+
 	if (shields > 0):
 		give_shields(-other.damage)
 	else:

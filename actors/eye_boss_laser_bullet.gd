@@ -8,7 +8,7 @@ var cooldown = 2
 
 func _init():
 	max_distance = 1
-	damage = 0
+	damage = 5
 	max_hits = 2
 	
 func _ready():

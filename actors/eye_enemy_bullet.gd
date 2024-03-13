@@ -4,4 +4,4 @@ class_name EyeEnemyBullet
 
 func _init():
 	max_distance = 1000
-	damage = 1
+	damage = 4

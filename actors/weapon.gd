@@ -14,16 +14,19 @@ func process(delta):
 	if (cooldown > 0):
 		cooldown = cooldown - delta;
 		
-
+func get_bullet_rotation(config: WeaponProjectileConfig) -> float:
+	return config.rotation;
+		
 func shoot(owner: Actor):
 	if (cooldown <= 0):
 		for b in bullets:
 			var bullet = b.bullet_scene.instantiate()
-			var rotation = 	owner.rotation + b.rotation
+			var config_rotation = get_bullet_rotation(b);
+			var rotation = owner.rotation + config_rotation
 		
 			bullet.rotation = rotation
 			bullet.position = owner.position + b.position.rotated(rotation) 
-			bullet.velocity = owner.facing(b.speed).rotated(b.rotation)
+			bullet.velocity = owner.facing(b.speed).rotated(config_rotation)
 			bullet.shooter = owner
 			bullet.is_enemy = b.is_enemy
 			bullet.id = b.id
@@ -36,5 +39,8 @@ func shoot(owner: Actor):
 				player.play()
 			
 		cooldown = max_cooldown
+		return true
 		
+	return false	
+	
 		

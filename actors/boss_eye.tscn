@@ -65,6 +65,8 @@ animations = [{
 radius = 164.195
 
 [node name="BossEye" type="CharacterBody2D"]
+disable_mode = 1
+motion_mode = 1
 script = ExtResource("1_p8hhf")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

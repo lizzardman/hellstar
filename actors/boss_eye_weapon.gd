@@ -4,7 +4,7 @@ class_name BossEyeWeapon
 
 func _init():
 	shooting_sound = preload("res://sounds/heavy_laser.wav")
-	max_cooldown = 3
+	max_cooldown = 6
 	
 	var bullet_scene = "res://actors/eye_boss_laser_bullet.tscn"
 	var bullet_left = WeaponProjectileConfig.new(bullet_scene)

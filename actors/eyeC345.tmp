@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://xywegcery4nq"]
+
+[ext_resource type="Script" path="res://actors/eye_enemy.gd" id="1_wb8j3"]
+[ext_resource type="Texture2D" uid="uid://c31l2f6o3w7s0" path="res://images/enemy_1/idle/enemy_1.png" id="2_apelg"]
+[ext_resource type="Texture2D" uid="uid://boiu4abp41rk1" path="res://images/enemy_1/idle/enemy_2.png" id="3_1fdbj"]
+[ext_resource type="Texture2D" uid="uid://cog3iokrxl0d3" path="res://images/enemy_1/idle/enemy_3.png" id="4_5huqk"]
+[ext_resource type="Texture2D" uid="uid://cs38coreakoe3" path="res://images/enemy_1/idle/enemy_4.png" id="5_vgvlh"]
+[ext_resource type="Texture2D" uid="uid://c4lqilxhjdxv8" path="res://images/energy_ring.png" id="6_165wk"]
+[ext_resource type="Texture2D" uid="uid://bcbgu8nykfdal" path="res://images/repair_ring.png" id="7_a6yam"]
+[ext_resource type="Texture2D" uid="uid://bp65g6rc1xb12" path="res://images/shield_ring.png" id="8_hde44"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3tis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_apelg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1fdbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5huqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vgvlh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v23f"]
+radius = 29.1548
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_wb8j3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_i3tis")
+
+[node name="EnergyRing" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_165wk")
+
+[node name="RepairRing" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_a6yam")
+
+[node name="ShieldRing" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_hde44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2v23f")

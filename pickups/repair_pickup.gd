@@ -1,6 +1,8 @@
 extends PickupActor
 
-var hp = 25
+class_name RepairPickup
+
+var hp = 15
 
 func apply_effect(body):
 	body.give_hit_points(hp)

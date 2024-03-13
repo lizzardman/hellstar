@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ssrsl5kv0ru"]
+
+[ext_resource type="Script" path="res://pickups/action_text.gd" id="1_oq6ss"]
+
+[node name="ActionText" type="Label"]
+script = ExtResource("1_oq6ss")

@@ -8,14 +8,17 @@ var rmb = false
 var lmb = false
 var iframes = 0
 
-var evade_max_cooldown = 0.7;
-var evade_energy_cost = 35
+var evade_max_cooldown = 0.5;
+var evade_energy_cost = 30
 var evade_cooldown = 0
 
-var energy = 100.0
-var max_energy = 100.0
-var energy_recharge_rate = 10.0
+var rocket_energy_cost = 30
 
+var energy = 120.0
+var max_energy = 120.0
+var energy_recharge_rate = 12.0
+
+var evade_scene = load("res://effects/evade_effect.tscn")
 
 func _init():
 	weapons.append(MachineGun.new())
@@ -39,13 +42,12 @@ func _evade():
 	if (evade_cooldown > 0 || energy < 35):
 		return
 		
-	var evade_scene = load("res://effects/evade_effect.tscn")
 	var evade_node = evade_scene.instantiate()
 	
 	add_child(evade_node)
 	
 	find_child('AnimatedSprite2D').play()
-	energy = energy - 35
+	energy = energy - evade_energy_cost
 	evade_cooldown = evade_max_cooldown
 	iframes = 0.7
 	
@@ -82,8 +84,9 @@ func  _process(delta):
 	if (lmb):
 		weapons[0].shoot(self)
 		
-	if (rmb):
-		weapons[1].shoot(self)
+	if (rmb && energy >= rocket_energy_cost):
+		if (weapons[1].shoot(self)):
+			energy = energy - rocket_energy_cost
 	
 	destination = get_global_mouse_position();
 	

@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4p5k3h873iiw"]
+
+[ext_resource type="Shader" path="res://addons/planet2d/planet.gdshader" id="1_mmf85"]
+[ext_resource type="Texture2D" uid="uid://drhpmt6w33j4d" path="res://images/space_background.png" id="1_rnt7l"]
+[ext_resource type="Script" path="res://start_button.gd" id="2_cyqw1"]
+[ext_resource type="Texture2D" uid="uid://et5ol8tpi4pd" path="res://images/title_bg.png" id="2_jn22e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bky6"]
+shader = ExtResource("1_mmf85")
+shader_parameter/texture_scale = Vector2(0.5, 0.5)
+shader_parameter/texture_offset = Vector2(0, 0)
+shader_parameter/atmosphere_color = Vector3(1, 1, 1)
+shader_parameter/atmosphere_intensity = 0.0
+shader_parameter/light_color = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(0, 0, 1)
+shader_parameter/light_minimum = 0.0
+shader_parameter/light_maximum = 1.0
+shader_parameter/specular_color = Vector3(1, 1, 1)
+shader_parameter/specular_intensity = 0.1
+shader_parameter/specular_shininess = 1.0
+shader_parameter/fade = 0.0
+shader_parameter/pixelize_enabled = false
+shader_parameter/pixelize_scale = 1.0
+
+[node name="StartingScreen" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+position = Vector2(562, 386)
+texture = ExtResource("1_rnt7l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_5bky6")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_right = 86.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer2"]
+layout_mode = 2
+text = "HELLSTAR ABERATION"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -800.0
+offset_bottom = 600.0
+grow_horizontal = 0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer3"]
+layout_mode = 2
+texture = ExtResource("2_jn22e")
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -20.0
+offset_right = 46.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+text = "Start game"
+script = ExtResource("2_cyqw1")

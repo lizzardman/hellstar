@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://duhf0e0j60crw"]
+[gd_scene load_steps=13 format=3 uid="uid://duhf0e0j60crw"]
 
 [ext_resource type="Script" path="res://actors/enemy.gd" id="1_ivjfd"]
 [ext_resource type="Texture2D" uid="uid://c31l2f6o3w7s0" path="res://images/enemy_1/idle/enemy_1.png" id="2_fr5e4"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cog3iokrxl0d3" path="res://images/enemy_1/idle/enemy_3.png" id="4_38jrs"]
 [ext_resource type="Texture2D" uid="uid://cs38coreakoe3" path="res://images/enemy_1/idle/enemy_4.png" id="5_hcy5j"]
 [ext_resource type="Script" path="res://actors/AnimatedSprite2D.gd" id="6_1w15q"]
+[ext_resource type="Texture2D" uid="uid://c4lqilxhjdxv8" path="res://images/energy_ring.png" id="7_4fq6b"]
+[ext_resource type="Script" path="res://actors/EnergyRing.gd" id="8_cbkat"]
+[ext_resource type="Texture2D" uid="uid://bcbgu8nykfdal" path="res://images/repair_ring.png" id="9_4qckb"]
+[ext_resource type="Script" path="res://actors/RepairRing.gd" id="10_xpcbk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cygxp"]
 animations = [{
@@ -47,3 +51,11 @@ shape = SubResource("RectangleShape2D_88bft")
 one_way_collision = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="EnergyRing" type="Sprite2D" parent="."]
+texture = ExtResource("7_4fq6b")
+script = ExtResource("8_cbkat")
+
+[node name="RepairRing" type="Sprite2D" parent="."]
+texture = ExtResource("9_4qckb")
+script = ExtResource("10_xpcbk")

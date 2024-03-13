@@ -26,8 +26,8 @@ func _on_impact():
 	
 func body_entered(item):
 	if (item is Actor && shooter != item):
-		if (item is Enemy != is_enemy):
-			if (enemies_hit.count(item) == 0):
+		if (item is EnemyActor != is_enemy):
+			if (enemies_hit.count(item) == 0 && max_hits > 0):
 				if (item.onImpact(self)):
 					enemies_hit.append(item)
 					max_hits -= 1

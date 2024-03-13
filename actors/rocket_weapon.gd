@@ -6,5 +6,5 @@ func _init():
 	var bullet_scene = "res://actors/rocket_bullet.tscn"
 	var bullet = WeaponProjectileConfig.new(bullet_scene)
 	bullet.speed = 500
-	max_cooldown = 1
+	max_cooldown = 0.7
 	bullets.append(bullet)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmghhga7727h0"]
+
+[ext_resource type="Script" path="res://actors/boss_aoe_bullet.gd" id="1_j8a0t"]
+[ext_resource type="Texture2D" uid="uid://c2ubjyofwsptn" path="res://images/particle_2.png" id="2_ejuha"]
+[ext_resource type="Texture2D" uid="uid://dmv3fbrnp7vth" path="res://images/particle_1.png" id="3_8vjpr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mne3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jjti"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jhjr"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvtpy"]
+radius = 4.0
+
+[node name="BossAoeBullet" type="Area2D"]
+script = ExtResource("1_j8a0t")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Particle2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-8.9407e-08, 8.9407e-08)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_ejuha")
+
+[node name="Particle3" type="Sprite2D" parent="Node2D"]
+position = Vector2(-28, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_8vjpr")
+
+[node name="Particle1" type="Sprite2D" parent="Node2D"]
+position = Vector2(-21, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_8vjpr")
+
+[node name="Particle5" type="Sprite2D" parent="Node2D"]
+position = Vector2(-11, 0)
+texture = ExtResource("3_8vjpr")
+
+[node name="Particle6" type="Sprite2D" parent="Node2D"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_8vjpr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8mne3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-11, 0)
+shape = SubResource("CircleShape2D_2jjti")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-21, 0)
+shape = SubResource("CircleShape2D_0jhjr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-28, 0)
+shape = SubResource("CircleShape2D_tvtpy")
